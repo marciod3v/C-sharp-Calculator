@@ -4,6 +4,20 @@ namespace Calculator
 {
     class Program
     {
+        static int Menu()
+        {
+            Console.Clear();
+            Console.WriteLine("Digite a operação desejada:");
+            Console.WriteLine("1 - SOMA");
+            Console.WriteLine("2 - SUBTRAÇÃO");
+            Console.WriteLine("3 - MULTIPLICAÇÃO");
+            Console.WriteLine("4 - DIVISÂO");
+            Console.WriteLine("5 - SAIR");
+            int respostaOperacao = int.Parse(Console.ReadLine());
+
+            return respostaOperacao;
+
+        }
         static void Main(string[] args)
         {
             string r = "sim";
@@ -11,15 +25,7 @@ namespace Calculator
 
             while (r == "sim")
             {
-                Console.Clear();
-                Console.WriteLine("Digite a operação desejada:");
-                Console.WriteLine("1 - SOMA");
-                Console.WriteLine("2 - SUBTRAÇÃO");
-                Console.WriteLine("3 - MULTIPLICAÇÃO");
-                Console.WriteLine("4 - DIVISÂO");
-                int respostaOperacao = int.Parse(Console.ReadLine());
-
-                switch (respostaOperacao)
+                switch (Menu())
                 {
                     case 1:
                         Soma();
@@ -37,21 +43,24 @@ namespace Calculator
                         Divisao();
                         break;
 
+                    case 5:
+                        Console.Clear();
+                        Console.WriteLine("Programa Finalizado");
+                        Console.ReadKey();
+                        System.Environment.Exit(0);
+                        break;
 
                     default:
                         Console.WriteLine("Operação inválida");
+                        Menu();
                         break;
                 }
-
                 Console.WriteLine("Calcular novamente ? sim/nao ");
                 r = Console.ReadLine();
             }
-
             Console.Clear();
             Console.WriteLine("Programa finalizado");
-
         }
-
         static void Soma()
         {
             Console.Clear();
@@ -65,6 +74,7 @@ namespace Calculator
             float s = v1 + v2;
 
             Console.WriteLine($"O resultado da soma é {s}");
+            Console.ReadKey();
         }
 
         static void Subtracao()
@@ -80,6 +90,7 @@ namespace Calculator
             float s = v1 - v2;
 
             Console.WriteLine($"O resultado da subtração é {s}");
+            Console.ReadKey();
         }
 
         static void Multiplicacao()
@@ -95,6 +106,7 @@ namespace Calculator
             float s = v1 * v2;
 
             Console.WriteLine($"O resultado da multiplicação é {s}");
+            Console.ReadKey();
         }
 
         static void Divisao()
@@ -110,6 +122,7 @@ namespace Calculator
             float s = v1 / v2;
 
             Console.WriteLine($"O resultado da divisão é {s.ToString("F2")}");
+            Console.ReadKey();
         }
     }
 }
